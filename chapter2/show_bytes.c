@@ -20,3 +20,7 @@ void show_float(float x){
 void show_pointer(void *x){
 	show_bytes((byte_pointer) &x, sizeof(void *));
 }
+
+int main(){
+	show_float(48329048.);
+}
