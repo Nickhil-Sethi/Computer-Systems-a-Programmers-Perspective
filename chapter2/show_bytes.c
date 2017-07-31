@@ -22,5 +22,7 @@ void show_pointer(void *x){
 }
 
 int main(){
+	show_int(48329048);
 	show_float(48329048.);
+	show_pointer(32232);
 }
