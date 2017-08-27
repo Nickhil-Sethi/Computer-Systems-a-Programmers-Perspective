@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// this creates a type 'byte_pointer' which points
+// to an object of type unsigned char
 typedef unsigned char *byte_pointer;
 
 void show_bytes(byte_pointer start, int len){
@@ -9,6 +11,7 @@ void show_bytes(byte_pointer start, int len){
 	printf("\n");
 }
 
+// (byte_pointer) cats the input as a byte_pointer
 void show_int(int x){
 	show_bytes((byte_pointer) &x, sizeof(int));
 }
@@ -21,8 +24,16 @@ void show_pointer(void *x){
 	show_bytes((byte_pointer) &x, sizeof(void *));
 }
 
+void test_show_bytes(int val){
+	int ival = val;
+	float fval = (float) val;
+	int *pval = &ival;
+	show_int(ival);
+	show_float(fval);
+	show_pointer(pval);
+}
+
 int main(){
-	show_int(48329048);
-	show_float(48329048.);
-	show_pointer(32232);
+	int val = 0x87654321;
+	test_show_bytes(val);
 }
