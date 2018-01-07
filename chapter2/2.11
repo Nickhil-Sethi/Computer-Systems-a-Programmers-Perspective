@@ -1,0 +1,3 @@
+A. the algorithm operates on arr[K] (len(arr)=2K+1) on its final iteration.
+B. Because a^a = 0 for all bits, and *x is *y, both pointers are set to 0 in the first step, and remain zero from then on.
+C. To prevent this, change the <= to < (you don't need to swap arr[k] with itself, this contributes nothing to the final solution).
