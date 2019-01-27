@@ -134,6 +134,9 @@ NOTES:
 
 
 #endif
+
+#include <stdio.h>
+
 //1
 /* 
  * bitXor - x^y using only ~ and & 
@@ -143,7 +146,10 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+  int x_and_not_y = x & ~y;
+  int y_and_not_x = y & ~x;
+  int x_XOR_y = ~(~x_and_not_y & ~y_and_not_x);
+  return x_XOR_y;
 }
 /* 
  * tmin - return minimum two's complement integer 
@@ -152,8 +158,9 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-
-  return 2;
+  int one = 1;
+  int shifted = one << 31;
+  return shifted;
 
 }
 //2
@@ -165,7 +172,9 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+  int min_int = tmin();
+  int all_ones = min_int ^ x;
+  return !(~all_ones);
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -176,7 +185,10 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+  int base = 0xAAAAAAAA;
+  int projected = x & base;
+  int should_be_zero = projected ^ base;
+  return !(should_be_zero);
 }
 /* 
  * negate - return -x 
