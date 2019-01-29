@@ -211,7 +211,12 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return 2;
+  int upper_mask = 0xFFFFFFF0;
+  int has_three = !((x & upper_mask) ^ 0x00000030);
+  int at_least_8 = !(!(x & 0x08));
+  int at_least_9 = at_least_8 & !(!(x & 0x07));
+  int at_least_10 = at_least_9 & !(!(x & 0x06));
+  return has_three & !at_least_10;
 }
 /* 
  * conditional - same as x ? y : z 
